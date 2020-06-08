@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FOODSHALA</title>
+
+    <meta charset="UTF-8">
+    <meta name="description" content="FOODSHALA">
+    <meta name="keywords" content="Food, order, food order, online food order">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> -->
+
+    <%/* If you want to discourage search engines from indexing this site, uncomment the following line: */%>
+    <%/* <meta name="robots" content="noindex"> */%>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+    <!--
+        Stylesheets and Preprocessors
+        ==============================
+
+        You can always bring in CSS files manually with `<link>` tags, or asynchronously
+        using a solution like AMD (RequireJS).  Or, if you like, you can take advantage
+        of Sails' conventional asset pipeline (boilerplate Gruntfile).
+
+        By default, stylesheets from your `assets/styles` folder are included
+        here automatically (between STYLES and STYLES END). Both CSS (.css) and LESS (.less)
+        are supported. In production, your styles will be minified and concatenated into
+        a single file.
+
+        To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
+        For example, here are a few things you could do:
+
+            + Change the order of your CSS files
+            + Import stylesheets from other directories
+            + Use a different or additional preprocessor, like SASS, SCSS or Stylus
+    -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--STYLES-->
+    <link rel="stylesheet" href="/styles/elegant-icons.css">
+    <link rel="stylesheet" href="/styles/font-awesome.min.css">
+    <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="/styles/jquery-ui.min.css">
+    <link rel="stylesheet" href="/styles/nice-select.css">
+    <link rel="stylesheet" href="/styles/owl.carousel.min.css">
+    <link rel="stylesheet" href="/styles/slicknav.min.css">
+    <link rel="stylesheet" href="/styles/style.css">
+    <!--STYLES END-->
+  </head>
+
+  <body>
+
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Humberger Begin -->
+    <div class="humberger__menu__overlay"></div>
+    <div class="humberger__menu__wrapper">
+        <div class="humberger__menu__logo">
+            <a href="#"><img src="/img/logo.png" alt="logo" class="rounded-lg"></a>
+        </div>
+        <div class="humberger__menu__cart">
+            <% if(req.session.loggedRestaurant==true){ %>
+                <ul>
+
+                </ul>
+            <% } else{ %>
+                <ul>
+                    <li><b>Shopping Cart:- </b><a href="/pages/shopping-cart"><i class="fa fa-shopping-bag"></i></a></li>
+                </ul>
+            <% } %>
+        </div>
+        <div class="humberger__menu__widget">
+            <div class="header__top__right__language">
+                <i class="fa fa-user"></i>
+                <div>Register Options</div>
+                <span class="arrow_carrot-down"></span>
+                <ul>
+                    <li><a href="/pages/customerRegister">Customer</a></li>
+                    <li><a href="/pages/restaurantRegister">Restaurant</a></li>
+                </ul>
+            </div>
+            <!-- <div class="header__top__right__auth">
+                <a href="#"><i class="fa fa-user"></i> Register | </a>
+            </div> -->
+            <div class="header__top__right__language">
+                <i class="fa fa-user"></i>
+                <% if(req.session.loggedRestaurant==true || req.session.loggedCustomer==true){ %>
+                    <div class="header__top__right__auth">
+                        <a href="/logout">Log Out </a>
+                    </div>
+                <% } else{ %>
+                    <div>Login Options</div>
+                    <span class="arrow_carrot-down"></span>
+                    <ul>
+                        <li><a href="/pages/customerLogin">Customer</a></li>
+                        <li><a href="/pages/restaurantLogin">Restaurant</a></li>
+                    </ul>
+                <% } %>
+            </div>
+        </div>
+        <nav class="humberger__menu__nav mobile-menu">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="#">Restaurants</a>
+                    <ul class="header__menu__dropdown">
+                        <li><a href="/pages/vegRestaurants">Veg Restaurants</a></li>
+                        <li><a href="/pages/nonvegRestaurants">Non-Veg Restaurants</a></li>
+                    </ul>
+                </li>
+                <% if(req.session.loggedRestaurant==true){ %>
+                    <li><a href="#">Owner Options</a>
+                        <ul class="header__menu__dropdown">
+                            <li><a href="/pages/shop-details">Restaurant Details</a></li>
+                            <li><a href="/pages/viewOrders">View Orders</a></li>
+                        </ul>
+                    </li>
+                <% } %>
+                <li><a href="/pages/contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div id="mobile-menu-wrap"></div>
+        <div class="header__top__right__social">
+            <a href="https://www.facebook.com/shivansh.pagare" target="_blank"><i class="fa fa-facebook"></i></a>
+            <a href="https://twitter.com/ShivanshPagare" target="_blank"><i class="fa fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/shivansh-pagare-7330a1128/" target="_blank"><i class="fa fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/shivanshpagare/" target="_blank"><i class="fa fa-instagram"></i></a>
+        </div>
+        <div class="humberger__menu__contact">
+            <ul>
+                <li><i class="fa fa-envelope"></i> shivanshpagare97@gmail.com</li>
+                <li>COD + Free Shipping on all Orders</li>
+            </ul>
+        </div>
+    </div>
+    <!-- Humberger End -->
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="header__top__left">
+                            <ul>
+                                <li><i class="fa fa-envelope"></i>shivanshpagare97@gmail.com</li>
+                                <li>COD + Free Shipping on all Orders</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="header__top__right">
+                            <div class="header__top__right__social">
+                                <a href="https://www.facebook.com/shivansh.pagare" target="_blank"><i class="fa fa-facebook"></i></a>
+                                <a href="https://twitter.com/ShivanshPagare" target="_blank"><i class="fa fa-twitter"></i></a>
+                                <a href="https://www.linkedin.com/in/shivansh-pagare-7330a1128/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                                <a href="https://www.instagram.com/shivanshpagare/" target="_blank"><i class="fa fa-instagram"></i></a>
+                            </div>
+                            <div class="header__top__right__language">
+                                <i class="fa fa-user"></i>
+                                <div>Register Options</div>
+                                <span class="arrow_carrot-down"></span>
+                                <ul>
+                                    <li><a href="/pages/customerRegister">Customer</a></li>
+                                    <li><a href="/pages/restaurantRegister">Restaurant</a></li>
+                                </ul>
+                            </div>
+                            <!-- <div class="header__top__right__auth">
+                                <a href="#"><i class="fa fa-user"></i> Register | </a>
+                            </div> -->
+                            <div class="header__top__right__language">
+                                <i class="fa fa-user"></i>
+                                <% if(req.session.loggedRestaurant==true || req.session.loggedCustomer==true){ %>
+                                    <div class="header__top__right__auth">
+                                        <a href="/logout">Log Out </a>
+                                    </div>
+                                <% } else{ %>
+                                    <div>Login Options</div>
+                                    <span class="arrow_carrot-down"></span>
+                                    <ul>
+                                        <li><a href="/pages/customerLogin">Customer</a></li>
+                                        <li><a href="/pages/restaurantLogin">Restaurant</a></li>
+                                    </ul>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="header__logo">
+                        <a href="/"><img src="/img/logo.png" alt="logo" class="rounded-lg"></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <nav class="header__menu">
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="#">Restaurants</a>
+                                <ul class="header__menu__dropdown">
+                                    <li><a href="/pages/vegRestaurants">Veg Restaurants</a></li>
+                                    <li><a href="/pages/nonvegRestaurants">Non-Veg Restaurants</a></li>
+                                </ul>
+                            </li>
+                            <% if(req.session.loggedRestaurant==true){ %>
+                                <li><a href="#">Owner Options</a>
+                                    <ul class="header__menu__dropdown">
+                                        <li><a href="/pages/addItems">Add Items</a></li>
+                                        <li><a href="/pages/viewOrders">View Orders</a></li>
+                                    </ul>
+                                </li>
+                            <% } %>
+                            <li><a href="/pages/contact">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3">
+                    <div class="header__cart">
+                        <% if(req.session.loggedRestaurant==true){ %>
+                            <ul>
+
+                            </ul>
+                        <% } else{ %>
+                            <ul>
+                                <li><b>Shopping Cart:- </b><a href="/pages/shopping-cart"><i class="fa fa-shopping-bag"></i></a></li>
+                            </ul>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+            <div class="humberger__open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+    <br>
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="/img/mixed.png">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>Welcome To FOODSHALA</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+    
+    <%- body %>
+
+    <!-- Contact Form Begin -->
+    <!-- 
+        <div class="contact-form spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="contact__form__title">
+                            <h2>Leave Message</h2>
+                        </div>
+                    </div>
+                </div>
+                <form action="#">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <input type="text" placeholder="Your name">
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <input type="text" placeholder="Your Email">
+                        </div>
+                        <div class="col-lg-12 text-center">
+                            <textarea placeholder="Your message"></textarea>
+                            <button type="submit" class="site-btn">SEND MESSAGE</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div> 
+    -->
+  <!-- Contact Form End -->
+    <br>
+    <br>
+    <br>
+    <br>
+  <!-- Footer Section Begin -->
+    <footer class="footer spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer__about">
+                        <br>
+                        <br>
+                        <div class="footer__about__logo">
+                            <a href="/"><img src="/img/logo.png" alt="logo" class="rounded-lg"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
+                    <div class="footer__about">
+                        <ul>
+                            <li><u>Address</u>: A-59, IGNOU Main Rd
+                                Block A, Paryavaran Complex, Sainik Farm
+                                New Delhi, Delhi 110030</li>
+                            <li><u>Contact No.</u>: 7999735633</li>
+                            <li><u>Email</u>: shivanshpagare97@gmail.com</li>
+                        </ul>
+                        <ul></ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-1">
+                    <div class="footer__widget">
+                        <br>
+                        <br>
+                        <div class="footer__widget__social">
+                            <a href="https://www.facebook.com/shivansh.pagare" target="_blank"><i class="fa fa-facebook"></i></a>
+                            <a href="https://twitter.com/ShivanshPagare" target="_blank"><i class="fa fa-twitter"></i></a>
+                            <a href="https://www.linkedin.com/in/shivansh-pagare-7330a1128/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                            <a href="https://www.instagram.com/shivanshpagare/" target="_blank"><i class="fa fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer__copyright">
+                        <div class="footer__copyright__text"><p>This Website is made with <i class="fa fa-heart" aria-hidden="true"></i> by Shivansh Pagare (Contact:- 7999735633)</p></div>
+                        <div class="footer__copyright__payment"><img src="/img/payment-item.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+  <!-- Footer Section End -->
+
+    <!--
+        Client-side Templates
+        ========================
+
+        HTML templates are important prerequisites of modern, rich client applications.
+        To work their magic, frameworks like React, Vue.js, Angular, Ember, and Backbone
+        require that you load these templates client-side.
+
+        By default, your Gruntfile is configured to automatically load and precompile
+        client-side JST templates in your `assets/templates` folder, then
+        include them here automatically (between TEMPLATES and TEMPLATES END).
+
+        To customize this behavior to fit your needs, just edit `tasks/pipeline.js`.
+        For example, here are a few things you could do:
+
+            + Import templates from other directories
+            + Use a different view engine (handlebars, dust, pug/jade, etc.)
+            + Internationalize your client-side templates using a server-side
+              stringfile before they're served.
+    -->
+
+    <!--TEMPLATES-->
+    <!--TEMPLATES END-->
+
+
+    <!--
+        Server-side View Locals
+        ========================
+
+        Sometimes, it's convenient to get access to your server-side view locals from
+        client-side JavaScript.  This can improve page load times, remove the need for
+        extra AJAX requests, and make your client-side code easier to understand and
+        to maintain.  Sails provides a simple mechanism for accessing dynamic view
+        locals: the "exposeLocalsToBrowser()" view partial.
+
+        For more information on using this built-in feature, see:
+        https://sailsjs.com/docs/concepts/views/locals#?escaping-untrusted-data-using-exposelocalstobrowser
+
+    -->
+
+
+    <!--
+
+      Client-side Javascript
+      ========================
+
+      You can always bring in JS files manually with `script` tags, or asynchronously
+      on the client using a solution like AMD (RequireJS).  Or, if you like, you can
+      take advantage of Sails' conventional asset pipeline (boilerplate Gruntfile).
+
+      By default, files in your `assets/js` folder are included here
+      automatically (between SCRIPTS and SCRIPTS END).  Both JavaScript (.js) and
+      CoffeeScript (.coffee) are supported. In production, your scripts will be minified
+      and concatenated into a single file.
+
+      To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
+      For example, here are a few things you could do:
+
+          + Change the order of your scripts
+          + Import scripts from other directories
+          + Use a different preprocessor, like TypeScript
+
+    -->
+
+    <!-- JS CDN -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <!-- jquery CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.js" integrity="sha256-/MqPdltDqe7iSoqjNkMb7+w1uk5FJdOpIS7YErWktBQ=" crossorigin="anonymous"></script>
+
+    <!--SCRIPTS-->
+    <script src="/dependencies/sails.io.js"></script>
+    <script src="/js/customValidator.js"></script>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/jquery.nice-select.min.js"></script>
+    <script src="/js/jquery.slicknav.js"></script>
+    <script src="/js/jquery.validate.js"></script>
+    <script src="/js/jquery.validate.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/mixitup.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <!--SCRIPTS END-->
+  </body>
+</html>

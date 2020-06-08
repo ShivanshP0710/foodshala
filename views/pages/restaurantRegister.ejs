@@ -1,0 +1,105 @@
+<br>
+<div class="container">
+  <div class="row">
+      <div class="col-lg-12">
+        <center><h1><u>Fill All The Details</u></h1></center>
+        <br>
+        <form action="/rCreate" method="post" class="restaurant_register">
+          <div class="form-group">
+            <% if(flash && flash.err) { %>
+              <% if(flash.err=="Restaurant Already Registered with the Entered Email Id or Name") { %>
+                <p class="alert alert-danger">
+                  <% Object.keys(flash.err).forEach(function(error){ %>
+                    <%= flash.err[error] %>
+                  <% }) %>
+                </p>
+              <% } %>
+        
+              <% if(flash.err=="Restaurant Added Successfully") { %>
+                <p class="alert alert-success">
+                  <% Object.keys(flash.err).forEach(function(error){ %>
+                    <%= flash.err[error] %>
+                  <% }) %>
+                </p>
+              <% } %>
+            <% } %>
+          </div>
+            <br>
+          <div class="form-group">
+            <label>Restaurant Name</label>
+            <input type="text" class="form-control" name="eName" placeholder="xyz" >
+          </div>
+          <div class="form-group">
+            <label>Owner Name</label>
+            <input type="text" class="form-control" name="eOName" placeholder="xyz" >
+          </div>
+          <div class="form-group">
+            <label>Prefered Restaurant Type</label>
+            <input type="text" class="form-control" name="ePRT" placeholder="veg/non-veg" >
+          </div>
+          <div class="form-group">
+            <label>Email address</label>
+            <input type="email" class="form-control" name="eEmail" aria-describedby="emailHelp" placeholder="xyz@gmail.com" >
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="text" class="form-control" name="ePassword" placeholder="Enter Password" >
+          </div>
+          <div class="form-group">
+            <label>Phone No.</label>
+            <input type="text" class="form-control" name="ePhoneNo" placeholder="7999735633" >
+          </div>
+          <div class="form-group">
+            <label>Open Time</label>
+            <input type="text" class="form-control" name="eOpenTime" placeholder="9:00 am to 11:00 pm" >
+          </div>
+          <div class="form-group">
+            <label>Certified By</label>
+            <input type="text" class="form-control" name="eCertifiedBy" placeholder="fssai" >
+          </div>
+          <div class="form-group">
+            <label>Certification Licence No.</label>
+            <input type="text" class="form-control" name="eCertificationNo" placeholder="12216017000287" >
+          </div>
+          <div class="form-group">
+            <label>GST No.</label>
+            <input type="text" class="form-control" name="eGSTNo" placeholder="22AAAAA0000A1Z5" >
+          </div>
+          <div class="form-group">
+            <label>Address</label>
+            <input type="text" class="form-control" name="eAddress" placeholder="Enter Address" >
+          </div>
+          <div class="form-group">
+            <label>Embedded Map Link</label>
+            <input type="text" class="form-control" name="eEML" placeholder="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28045.50471917369!2d77.18851403955078!3d28.5190306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce1e593f98813%3A0x2f5ff4a3c1926491!2sA-59%2C%20IGNOU%20Main%20Rd%2C%20Block%20A%2C%20Paryavaran%20Complex%2C%20Sainik%20Farm%2C%20New%20Delhi%2C%20Delhi%20110030!5e0!3m2!1sen!2sin!4v1590406147184!5m2!1sen!2sin" >
+            <small id="emailHelp" class="form-text text-muted">If you do not know how to get Embedded Map Link then feel free to Contact us on 7999735633</small>
+          </div>
+          <div class="form-group">
+            <label>Facebook Page Link</label>
+            <input type="text" class="form-control" name="eFacebook" placeholder="https://www.facebook.com/xyz" >
+          </div>
+          <div class="form-group">
+            <label>Twitter Page Link</label>
+            <input type="text" class="form-control" name="eTwitter" placeholder="https://twitter.com/xyz" >
+          </div>
+          <div class="form-group">
+            <label>LinkedIn Page Link</label>
+            <input type="text" class="form-control" name="eLinkedIn" placeholder="https://www.linkedin.com/in/xyz" >
+          </div>
+          <div class="form-group">
+            <label>Instagram Page Link</label>
+            <input type="text" class="form-control" name="eInstagram" placeholder="https://www.instagram.com/xyz" >
+          </div>
+          <!-- <div class="form-group">
+            <input type="file" id="my_file" name="photo" accept="image/x-png,image/jpg,image/jpeg"/>
+          </div> -->
+          <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+          <!-- <input type="hidden" name="_csrf" value="<%=_csrf%>"> -->
+        </form>  
+    </div>
+  </div>
+</div>
+<script>
+  $('.restaurant_register').validate();
+</script>

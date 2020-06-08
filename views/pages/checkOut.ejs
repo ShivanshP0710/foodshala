@@ -1,0 +1,56 @@
+<% let CustomerName =  "" %>
+<% let RestaurantName =  "" %>
+<% let all =  "" %>
+<% var price = 0 %>
+
+<br>
+<div class="container">
+  <div class="row">
+      <div class="col-lg-12">
+        <center><h1><u>Order Details</u></h1></center>
+        <br>
+        <br>
+        <form action="/createOrder" method="post">
+          <div class="form-group">
+            <label>Items with Price:- </label>
+              <% coData.forEach(function(dbItemData){ %>
+                <% CustomerName =  dbItemData.Customer_Name %>
+                <% RestaurantName =  dbItemData.Restaurant_Name %>
+                <% let data =  dbItemData.Item_Name + ":- Rs." + dbItemData.Price + ", " %>
+                <% all=all + data %>
+                <% price=parseInt(price) + parseInt(dbItemData.Price) %>
+              <% }) %>
+            <input type="text" class="form-control" name="eIDetails" value="<%= all %>" disabled="disabled" required >
+          </div>          
+          <div class="form-group">
+            <label>Restaurant Name</label>
+            <input type="text" class="form-control" name="eRName" value="<%= RestaurantName %>" disabled="disabled" required >
+          </div>
+          <div class="form-group">
+            <label>Customer Name</label>
+            <input type="text" class="form-control" name="eCName" value="<%= CustomerName %>" disabled="disabled" required >
+          </div>
+          <div class="form-group">
+            <label>Customer PhoneNo</label>
+            <input type="text" class="form-control" name="eCPhoneNo" value="<%= req.session.customerDetails.Customer_PhoneNo %>" required >
+          </div>
+          <div class="form-group">
+            <label>Customer Address</label>
+            <input type="text" class="form-control" name="eCAddress" value="<%= req.session.customerDetails.Customer_Address %>" required >
+          </div>
+          <div class="form-group">
+            <label>Order Total (in INR)</label>
+            <input type="text" class="form-control" name="orderTotal" value="<%= price %>" disabled="disabled" required >
+          </div>
+          <!-- <div class="shoping__checkout">
+            <ul>
+                <li><h5>Order Total<span>Rs <%= price %></span></h5></li>
+            </ul>
+          </div> -->
+          <br>
+          <button type="submit" class="btn btn-primary btn-lg btn-block">Generate Order</button>
+          <input type="hidden" name="_csrf" value="<%=_csrf%>">
+        </form>  
+    </div>
+  </div>
+</div>

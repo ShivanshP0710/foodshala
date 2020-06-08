@@ -1,0 +1,31 @@
+    <!-- Featured Section Begin -->
+    <section class="featured spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>Non-Veg Restaurants:-</h2>
+                    </div>
+                    <br>
+                    <!-- ejs syntax -->
+                    <% fetchedNonVegRestaurant.forEach(function(dbNonVeg){ %>
+                    <div class="row featured__filter">
+                        <div class="col-md-2 col-sm-2 padleft-right">
+                            <div class="featured__item">
+                                <div class="featured__item__pic set-bg" data-setbg="/img/restaurants/Restaurant.png">
+                                    <ul class="featured__item__pic__hover">
+                                        <form action="/pages/restaurantDetails/<%= dbNonVeg.Restaurant_Name %>" method="post">
+                                            <button type="submit" class="btn btn-info"><%= dbNonVeg.Restaurant_Name %></button>
+                                            <input type="hidden" name="_csrf" value="<%=_csrf%>">
+                                        </form>
+                                    </ul>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Featured Section End -->
