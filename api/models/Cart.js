@@ -11,7 +11,8 @@ module.exports = {
 
     Customer_Name: {
       type: 'string',
-      required: true,    
+      required: true,
+      unique: true    
     },
 
     Restaurant_Name: {
