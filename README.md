@@ -11,7 +11,9 @@
   6. Run Command " npm install sails-mongo " (this will install MongoDb adapter)
   7. Now at last run command " sails lift " (To Run or Lift the sails app).
   
-  Helpful link:- https://sailsjs.com/get-started
+  Helpful links:- 
+  1. To Clone and Run Sails Website:- https://sailsjs.com/documentation/contributing/code-submission-guidelines/best-practices
+  2. To Get Started with Sails:-  https://sailsjs.com/get-started
 
 # foodshala
 
