@@ -9,7 +9,9 @@
   5. Run Command " npm link " (to download all the required node dependensies).
   6. Run Command " npm link sails " (to link all the required node dependensies to sails).
   6. Run Command " npm install sails-mongo " (this will install MongoDb adapter)
-  7. Now at last run command " sails lift " (To Run or Lift the sails app).
+  7. Now at last run command " sails lift " (To Run or Lift the sails app).  
+  8. Open any Browser(prefered Google Chrome) and type " localhost:1337 ". Now you will be able to see the website ready and working.
+  
   
   Helpful links:- 
   1. To Clone and Run Sails Website:- https://sailsjs.com/documentation/contributing/code-submission-guidelines/best-practices
