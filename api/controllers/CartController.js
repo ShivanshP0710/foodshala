@@ -12,7 +12,7 @@ module.exports = {
         if(req.session.loggedCustomer==true){
             let cname = req.session.customer;
             console.log(cname);
-            console.log("in iAddToCart");
+            console.log("in shoppingCart");
             Cart.find({Customer_Name:cname}).exec(function(err,fCData){
                 console.log(fCData);
                 if(err || !fCData)
