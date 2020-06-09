@@ -45,15 +45,17 @@ module.exports = {
                     res.send(500, 'Database Error');
                 }
                 else{
-                    console.log("in else");             
-                    Cart.create({Customer_Name:cname,Restaurant_Name:fIData.Restaurant_Name,Item_Name:fIData.Item_Name,Price:fIData.Price}).exec(function(err){
+                    console.log("in else");
+                    let cname = req.session.customer;
+                    console.log(cname);            
+                    Cart.create({Customer_Name:cname,Restaurant_Name:fIData.Restaurant_Name,Item_Name:fIData.Item_Name,Price:fIData.Price}).exec(function(err,data){
                         if(err)
                         {
                             res.send(500,'Item Already in Cart');
                             console.log(err);
                         } 
                         else
-                        {
+                        {           
                             console.log("Added");
                             res.redirect('/');
                         }
