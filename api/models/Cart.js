@@ -9,24 +9,36 @@ module.exports = {
 
   attributes: {
 
+    //schema: true,
+
+    CWIId: {
+      type: 'string',
+      required: true,
+      unique: true
+    },
+
     Customer_Name: {
       type: 'string',
       required: true,
+      unique: false
     },
 
     Restaurant_Name: {
       type: 'string',
-      required: true,    
+      required: true,
+      unique: false    
     },
 
     Item_Name: {
       type: 'string',
-      required: true,    
+      required: true,
+      unique: false    
     },
 
     Price: {
       type: 'string',
-      required: true
+      required: true,
+      unique: false
     },
 
   },

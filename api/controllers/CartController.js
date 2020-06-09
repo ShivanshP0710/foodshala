@@ -4,7 +4,7 @@
  * @description :: Server-side actions for handling incoming requests.
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
-
+const crypto = require('crypto');
 module.exports = {
     
     shoppingCart:function(req,res)
@@ -47,8 +47,10 @@ module.exports = {
                 else{
                     console.log("in else");
                     let cname = req.session.customer;
-                    console.log(cname);            
-                    Cart.create({Customer_Name:cname,Restaurant_Name:fIData.Restaurant_Name,Item_Name:fIData.Item_Name,Price:fIData.Price}).exec(function(err,data){
+                    console.log(cname);
+                    let uID = crypto.randomBytes(2).toString('hex');            
+                    console.log(uID);
+                    Cart.create({CWIId:uID,Customer_Name:cname,Restaurant_Name:fIData.Restaurant_Name,Item_Name:fIData.Item_Name,Price:fIData.Price}).exec(function(err){
                         if(err)
                         {
                             res.send(500,'Item Already in Cart');

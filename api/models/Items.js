@@ -9,6 +9,8 @@ module.exports = {
 
   attributes: {
 
+    //schema: true,
+
     Restaurant_Name: {
       type: 'string',
       required: true,
