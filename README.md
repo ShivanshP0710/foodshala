@@ -2,15 +2,18 @@
  Food ordering Website
 
 # Pre-requisites to run this app:-
-  1. npm installed in your system.
-  2. vsCode editor installed in your system (prefered).
-  3. In Terminal:-
-  4. Run Command " npm install sails -g " (this will install sails in your system globally).
-  5. Run Command " npm link " (to download all the required node dependensies).
-  6. Run Command " npm link sails " (to link all the required node dependensies to sails).
-  6. Run Command " npm install sails-mongo " (this will install MongoDb adapter)
-  7. Now at last run command " sails lift " (To Run or Lift the sails app).  
-  8. Open any Browser(prefered Google Chrome) and type " localhost:1337 ". Now you will be able to see the website ready and working.
+  1. Should have npm installed in your system.
+  2. Should have MongoDb intalled in your system.
+  3. vsCode editor installed in your system (prefered).
+  
+  4. In Terminal:-
+  5. Run Command " npm install sails -g " (this will install sails in your system globally).
+  6. Run Command " npm link " (to download all the required node dependensies).
+  7. Run Command " npm link sails " (to link all the required node dependensies to sails).
+  8. Run Command " npm install sails-mongo " (this will install MongoDb adapter)
+  9. Now at last run command " sails lift " (To Run or Lift the sails app).  
+  
+  10. Open any Browser(prefered Google Chrome) and type " localhost:1337 ". Now you will be able to see the website ready and working.
   
   
   Helpful links:- 
