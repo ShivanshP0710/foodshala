@@ -7,6 +7,15 @@
                         <h2>Orders</h2>
                     </div>
 
+                    <!-- ejs syntax -->
+                    <% if(req.session.loggedCustomer==true){ %>    
+                        <div class="section-title related__product__title">
+                            <h4>Note:-</h4>
+                            <h4>1. Order Details Will Only Be Available Till The Order Not Been Delivered.</h4>
+                            <h4>2. Order Cancel Option Will Only Be Available Till The Order Not Been Dispatched. </h4>
+                        </div>
+                    <% } %>
+
                     <table class="table table-striped">
                         <thead>
                             <tr>

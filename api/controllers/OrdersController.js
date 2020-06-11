@@ -63,9 +63,9 @@ module.exports = {
                     console.log(rName);
                     let cName = req.session.customerDetails.Customer_Name;
                     console.log(cName);
-                    let cPhoneNo = req.session.customerDetails.Customer_PhoneNo;
+                    let cPhoneNo = req.body.eCPhoneNo;
                     console.log(cPhoneNo);
-                    let cAddress = req.session.customerDetails.Customer_Address;
+                    let cAddress = req.body.eCAddress;
                     console.log(cAddress);
                     let orderTotal = oTotal;
                     console.log(orderTotal);
@@ -85,7 +85,7 @@ module.exports = {
                                 }
                                 else
                                 {
-                                    res.send(500,'Thank You for Ordering');
+                                    res.redirect('/pages/orderPlaced');
                                 }
                             });
                             return false;
@@ -167,6 +167,18 @@ module.exports = {
         else{
             res.redirect('/');
         }
+    },
+
+    orderPlaced:function(req,res)
+    {
+        if(req.session.loggedCustomer==true)
+        {
+            res.view('pages/orderPlaced');
+        }
+        else
+        {
+            res.redirect('/pages/customerLogin');
+        }   
     },
 
 };

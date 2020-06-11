@@ -57,6 +57,7 @@ module.exports.routes = {
   'GET /pages/rViewOrders': 'OrdersController.rViewOrders',
   'post /oChange/:id': 'OrdersController.oChange',
   'GET /pages/cViewOrders': 'OrdersController.cViewOrders',
+  'GET /pages/orderPlaced': 'OrdersController.orderPlaced',
   
   /***************************************************************************
   *                                                                          *
