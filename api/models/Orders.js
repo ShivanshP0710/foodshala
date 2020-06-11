@@ -11,11 +11,18 @@ module.exports = {
 
     //schema: true,
 
-    CWIId: {
+    Order_Id: {
       type: 'string',
       required: true,
       unique: true
     },
+
+    Date_Time: { 
+      type: 'ref', 
+      columnType: 'datetime',
+      unique: false 
+    },
+ 
 
     Items_with_Price: {
       type: 'string',

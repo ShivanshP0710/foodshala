@@ -114,11 +114,16 @@
                 <% if(req.session.loggedRestaurant==true){ %>
                     <li><a href="#">Owner Options</a>
                         <ul class="header__menu__dropdown">
-                            <li><a href="/pages/shop-details">Restaurant Details</a></li>
-                            <li><a href="/pages/viewOrders">View Orders</a></li>
+                            <li><a href="/pages/addItems">Add Items</a></li>
+                            <li><a href="/pages/rViewOrders">View Orders</a></li>
                         </ul>
                     </li>
                 <% } %>
+
+                <% if(req.session.loggedCustomer==true){ %>
+                    <li><a href="/pages/cViewOrders">Your Orders</a></li>
+                <% } %>
+
                 <li><a href="/pages/contact">Contact</a></li>
             </ul>
         </nav>
@@ -216,6 +221,11 @@
                                     </ul>
                                 </li>
                             <% } %>
+                            
+                            <% if(req.session.loggedCustomer==true){ %>
+                                <li><a href="/pages/cViewOrders">Your Orders</a></li>
+                            <% } %>
+                            
                             <li><a href="/pages/contact">Contact</a></li>
                         </ul>
                     </nav>

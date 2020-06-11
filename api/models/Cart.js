@@ -11,7 +11,7 @@ module.exports = {
 
     //schema: true,
 
-    CWIId: {
+    Cart_Item_Id: {
       type: 'string',
       required: true,
       unique: true

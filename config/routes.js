@@ -54,9 +54,10 @@ module.exports.routes = {
   //OrdersController
   'post /pages/checkOut/:custName': 'OrdersController.checkOut',
   'post /createOrder': 'OrdersController.createOrder',
-  'GET /pages/viewOrders': 'OrdersController.viewOrders',
-  'post /oDelivered/:id': 'OrdersController.oDelivered',
-
+  'GET /pages/rViewOrders': 'OrdersController.rViewOrders',
+  'post /oChange/:id': 'OrdersController.oChange',
+  'GET /pages/cViewOrders': 'OrdersController.cViewOrders',
+  
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *

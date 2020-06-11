@@ -1,46 +1,74 @@
-    <!-- Shoping Cart Section Begin -->
+    <!-- View Orders Section Begin -->
     <section class="shoping-cart spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title related__product__title">
-                        <h2>Foods In Cart</h2>
+                        <h2>Orders</h2>
                     </div>
 
                     <table class="table table-striped">
                         <thead>
                             <tr>
+                                <th>Order ID</th>
+                                <th>Order Date & Time</th>
                                 <th>Items with Price</th>
                                 <th>Restaurant Name</th>
                                 <th>Customer Name</th>
                                 <th>Customer PhoneNo</th>
                                 <th>Customer Address</th>
-                                <th> </th>
                                 <th>Order Total</th>
+                                <th> </th>
                             </tr>
                         </thead>
                         <tbody>
                             <!-- ejs syntax -->
-                            <% voData.forEach(function(dbVOData){ %>
-                            <tr>
-                                <td><%= dbVOData.Items_with_Price %></td>
-                                <td><%= dbVOData.Restaurant_Name %></td>
-                                <td><%= dbVOData.Customer_Name %></td>
-                                <td><%= dbVOData.Customer_PhoneNo %></td>
-                                <td><%= dbVOData.Customer_Address %></td>
-                                <td><%= dbVOData.Order_Total %></td>
-                                <td>
-                                    <form action="/oDelivered/<%= dbVOData.id %>" method="post">
-                                        <button type="submit"  class="btn btn-success">Delivered</button>
-                                        <input type="hidden" name="_csrf" value="<%=_csrf%>">
-                                    </form>
-                                </td>
-                            </tr>
-                            <% }) %>
+                            <% if(req.session.loggedRestaurant==true){ %>
+                                <% rVOData.forEach(function(dbrVOData){ %>
+                                <tr>
+                                    <td><%= dbrVOData.Order_Id %></td>
+                                    <td><%= dbrVOData.Date_Time %></td>
+                                    <td><%= dbrVOData.Items_with_Price %></td>
+                                    <td><%= dbrVOData.Restaurant_Name %></td>
+                                    <td><%= dbrVOData.Customer_Name %></td>
+                                    <td><%= dbrVOData.Customer_PhoneNo %></td>
+                                    <td><%= dbrVOData.Customer_Address %></td>
+                                    <td><%= dbrVOData.Order_Total %></td>
+                                    <td>
+                                        <form action="/oChange/<%= dbrVOData.id %>" method="post">
+                                            <button type="submit"  class="btn btn-success">Delivered</button>
+                                            <input type="hidden" name="_csrf" value="<%=_csrf%>">
+                                        </form>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                            <% } %>
+
+                            <!-- ejs syntax -->
+                            <% if(req.session.loggedCustomer==true){ %>
+                                <% cVOData.forEach(function(dbcVOData){ %>
+                                <tr>
+                                    <td><%= dbcVOData.Order_Id %></td>
+                                    <td><%= dbcVOData.Date_Time %></td>
+                                    <td><%= dbcVOData.Items_with_Price %></td>
+                                    <td><%= dbcVOData.Restaurant_Name %></td>
+                                    <td><%= dbcVOData.Customer_Name %></td>
+                                    <td><%= dbcVOData.Customer_PhoneNo %></td>
+                                    <td><%= dbcVOData.Customer_Address %></td>
+                                    <td><%= dbcVOData.Order_Total %></td>
+                                    <td>
+                                        <form action="/oChange/<%= dbcVOData.id %>" method="post">
+                                            <button type="submit"  class="btn btn-success">Cancel</button>
+                                            <input type="hidden" name="_csrf" value="<%=_csrf%>">
+                                        </form>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                            <% } %>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Shoping Cart Section End -->
+<!-- View Orders Section End -->

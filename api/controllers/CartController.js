@@ -48,9 +48,9 @@ module.exports = {
                     console.log("in else");
                     let cname = req.session.customer;
                     console.log(cname);
-                    let uID = crypto.randomBytes(2).toString('hex');            
-                    console.log(uID);
-                    Cart.create({CWIId:uID,Customer_Name:cname,Restaurant_Name:fIData.Restaurant_Name,Item_Name:fIData.Item_Name,Price:fIData.Price}).exec(function(err){
+                    let cID = crypto.randomBytes(2).toString('hex');            
+                    console.log(cID);
+                    Cart.create({Cart_Item_Id:cID,Customer_Name:cname,Restaurant_Name:fIData.Restaurant_Name,Item_Name:fIData.Item_Name,Price:fIData.Price}).exec(function(err){
                         if(err)
                         {
                             res.send(500,'Item Already in Cart');

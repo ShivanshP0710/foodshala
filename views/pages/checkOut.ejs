@@ -1,7 +1,6 @@
-<% let CustomerName =  "" %>
 <% let RestaurantName =  "" %>
 <% let all =  "" %>
-<% var price = 0 %>
+<% var oTotal = 0 %>
 
 <br>
 <div class="container">
@@ -14,11 +13,10 @@
           <div class="form-group">
             <label>Items with Price:- </label>
               <% coData.forEach(function(dbItemData){ %>
-                <% CustomerName =  dbItemData.Customer_Name %>
                 <% RestaurantName =  dbItemData.Restaurant_Name %>
                 <% let data =  dbItemData.Item_Name + ":- Rs." + dbItemData.Price + ", " %>
                 <% all=all + data %>
-                <% price=parseInt(price) + parseInt(dbItemData.Price) %>
+                <% oTotal=parseInt(oTotal) + parseInt(dbItemData.Price) %>
               <% }) %>
             <input type="text" class="form-control" name="eIDetails" value="<%= all %>" disabled="disabled" required >
           </div>          
@@ -28,7 +26,7 @@
           </div>
           <div class="form-group">
             <label>Customer Name</label>
-            <input type="text" class="form-control" name="eCName" value="<%= CustomerName %>" disabled="disabled" required >
+            <input type="text" class="form-control" name="eCName" value="<%= req.session.customerDetails.Customer_Name %>" disabled="disabled" required >
           </div>
           <div class="form-group">
             <label>Customer PhoneNo</label>
@@ -40,11 +38,11 @@
           </div>
           <div class="form-group">
             <label>Order Total (in INR)</label>
-            <input type="text" class="form-control" name="orderTotal" value="<%= price %>" disabled="disabled" required >
+            <input type="text" class="form-control" name="oTotal" value="<%= oTotal %>" disabled="disabled" required >
           </div>
           <!-- <div class="shoping__checkout">
             <ul>
-                <li><h5>Order Total<span>Rs <%= price %></span></h5></li>
+                <li><h5>Order Total<span>Rs <%= oTotal %></span></h5></li>
             </ul>
           </div> -->
           <br>
